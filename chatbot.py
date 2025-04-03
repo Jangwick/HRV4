@@ -11,8 +11,17 @@ from models import db, User, EmployeeProfile, LeaveRequest, TrainingEnrollment, 
 # Load environment variables
 load_dotenv()
 
+# Get the API key with a fallback error message
+gemini_api_key = os.environ.get("AIzaSyDCNzaTbNrfnToYROdJuDWYnITAag9uioM")
+if not gemini_api_key:
+    print("ERROR: GEMINI_API_KEY environment variable is not set!")
+    print("You need to set this on your Render dashboard or local environment.")
+    # Set a placeholder to avoid immediate crashes during import
+    # The actual client operations will still fail if called without a valid key
+    gemini_api_key = "AIzaSyDCNzaTbNrfnToYROdJuDWYnITAag9uioM"
+
 # Initialize Gemini API client
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+client = genai.Client(api_key=gemini_api_key)
 
 class HRChatbot:
     """School HR Assistant powered by Google Gemini API with user data integration"""

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: school-hr-system
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false  # This means you need to set it manually in the Render dashboard
+      - key: CLOUDINARY_CLOUD_NAME
+        value: demeqfksa
+      - key: CLOUDINARY_API_KEY
+        value: 533745472226365
+      - key: CLOUDINARY_API_SECRET
+        value: pLaP8rgs0DzasA39h7gCR0G374o
+      - key: CLOUDINARY_URL
+        value: cloudinary://533745472226365:pLaP8rgs0DzasA39h7gCR0G374o@demeqfksa
+      - key: SUPABASE_URL
+        value: https://bgagloszutevclxunkun.supabase.com/
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJnYWdsb3N6dXRldmNseHVua3VuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIxMTE2MzUsImV4cCI6MjA1NzY4NzYzNX0.g2GB8X7_1EFyxPCpfWmcF1QGmOckh_KU527I6qv3oVU
